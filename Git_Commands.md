@@ -67,6 +67,26 @@
     Merges a branch into the current branch, always creating a merge commit.  
     **Example:** `git merge --no-ff feature-branch`
 
+15. **`git switch bug-fix`**  
+    Switches to the `bug-fix` branch.  
+    **Example:** `git switch bug-fix` (switches to the `bug-fix` branch)
+
+16. **`git log`**  
+    Shows the commit history for the current branch.  
+    **Example:** `git log` (displays commit history)
+
+17. **`git switch master`**  
+    Switches to the `master` branch.  
+    **Example:** `git switch master` (switches to the `master` branch)
+
+18. **`git switch -c dark-mode`**  
+    Creates a new branch called `dark-mode` and switches to it. The `-c` flag is used to create a new branch.  
+    **Example:** `git switch -c dark-mode` (creates and switches to the `dark-mode` branch)
+
+19. **`git checkout orange-mode`**  
+    Switches to the `orange-mode` branch.  
+    **Example:** `git checkout orange-mode` (switches to the `orange-mode` branch)
+
 ---
 
 ## **Remote Repositories**
