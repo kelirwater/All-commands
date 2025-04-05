@@ -119,12 +119,16 @@
     Unstages changes or resets the commit history (with different options).  
     **Example:** `git reset HEAD file.txt` (unstages the file)  
     **Example:** `git reset --hard` (resets everything to the last commit)
+    **Example:** `git checkout --<file>` (Unstage a file and discard changes)
+    **Example:** `git reset` (Unstage all files)
 
-21. **`git revert`**  
+
+
+22. **`git revert`**  
     Creates a new commit that undoes changes made by a previous commit.  
     **Example:** `git revert <commit-hash>`
 
-22. **`git rm`**  
+23. **`git rm`**  
     Removes a file from the working directory and stages the deletion.  
     **Example:** `git rm file.txt`
 
