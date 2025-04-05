@@ -124,6 +124,11 @@
     **Definition:** Discards local changes and restores the file to the last committed state.  
     **Example:** `git restore README.md`
 
+25. **`git branch -m <new-branch-name>`**  
+    **Definition:** Renames the current branch or a specified branch. The `-m` flag is used to rename the branch.  
+    **Example:** `git branch -m new-branch-name` (renames the current branch to `new-branch-name`)  
+    **Example:** `git branch -m old-branch-name new-branch-name` (renames `old-branch-name` to `new-branch-name`)
+
 ---
 
 ## **Remote Repositories**
