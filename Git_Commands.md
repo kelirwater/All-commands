@@ -185,9 +185,9 @@
 
 ## **Git Aliases**
 
-32. **`git config --global alias.<alias-name> <command>`**  
+32. **`git config --global alias.<alias-name> "<command>"`**  
     Creates a shortcut (alias) for a Git command.  
-    **Example:** `git config --global alias.co checkout` (so `git co` is a shortcut for `git checkout`)
+    **Example:** `git config --global alias.co "checkout"` (so `git co` is a shortcut for `git checkout`)
 
 ---
 
