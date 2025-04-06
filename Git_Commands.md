@@ -243,6 +243,89 @@
 
    Example: `git push origin :v1.0`
 
+---
+
+# Git Rebase and Reflog Guide
+
+## Rebase a Feature Branch
+
+### Ensure you are on the branch you want to rebase
+
+```bash
+git checkout feature-branch
+git rebase main
+```
+
+This will replay the commits from `feature-branch` on top of the latest changes in `main`.
+
+## Resolve Conflicts During Rebase
+
+If there are any conflicts, you will need to resolve them manually.
+
+Use the merge tool in VSCode or edit the files directly.
+
+Then stage the resolved files:
+
+```bash
+git add <resolved-files>
+git rebase --continue
+```
+
+⚠️ **Avoid using `--force` when rebasing.** It can cause serious issues with the project's history. Many have horror stories of breaking their project with a careless `--force`.
+
+---
+
+## Git Reflog
+
+Git reflog tracks the history of your commits, including those that may no longer appear in the regular commit log. This is helpful for recovering lost work.
+
+### View Reflog
+
+```bash
+git reflog
+```
+
+Shows the history of HEAD movements and other actions.
+
+### Find a Specific Commit
+
+```bash
+git reflog <commit-hash>
+```
+
+Use this to inspect the state of the repository at a specific commit.
+
+### Recover Lost Commits or Changes
+
+If you've accidentally deleted a branch or made destructive changes, you can often recover with reflog:
+
+```bash
+git reflog
+# Find the commit
+
+git reset --hard <commit-hash>
+```
+
+Or use the relative index notation:
+
+```bash
+git reset --hard HEAD@{1}
+```
+
+This resets to the state of the repository at a previous point in time.
+
+---
+
+📌 **Tip:** Always double-check before performing destructive operations like `reset --hard`. You can always create a temporary branch at your current HEAD just in case:
+
+```bash
+git branch temp-backup
+```
+
+Stay safe and keep your commit history clean!
+
+---
+
 ## **Remote Repositories**
 
 15. **`git remote`**  
