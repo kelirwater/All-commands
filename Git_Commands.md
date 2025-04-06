@@ -12,6 +12,7 @@
 6. [Stashing Changes](#stashing-changes)
 7. [Configuration and Settings](#configuration-and-settings)
 8. [Git Aliases](#git-aliases)
+9. [Diff Stash and Tags](#diff-stash-and-tags)
 
 ---
 
@@ -130,6 +131,117 @@
     **Example:** `git branch -m old-branch-name new-branch-name` (renames `old-branch-name` to `new-branch-name`)
 
 ---
+
+## **Diff Stash and Tags**
+
+### **Git Diff Commands**
+
+1. **`git diff`**  
+   **Definition:** Shows the unstaged changes in your working directory compared to the staging area. This command alone will not show you the changes made in the files, such as `A` and `B`; options are needed to view the changes.  
+   **Example:** `git diff` (shows the unstaged changes in the working directory)
+
+   ***
+
+2. **`git diff --staged`**  
+   **Definition:** Shows the changes between your last commit and the staging area (i.e., changes that are staged and ready to be committed).  
+   **Example:** `git diff --staged` (shows the changes staged for commit)
+
+   ***
+
+3. **`git diff <branch-name-one> <branch-name-two>`**  
+   **Definition:** Compares the differences between two branches.  
+   **Example:** `git diff branch-one branch-two` (compares the differences between `branch-one` and `branch-two`)
+
+   ***
+
+4. **`git diff branch-name-one..branch-name-two`**  
+   **Definition:** Another way to compare the differences between two branches.  
+   **Example:** `git diff branch-one..branch-two` (compares the differences between `branch-one` and `branch-two`)
+
+   ***
+
+5. **`git diff <commit-hash-one> <commit-hash-two>`**  
+   **Definition:** Compares the differences between two commits.  
+   **Example:** `git diff abc1234 def5678` (compares the differences between commit `abc1234` and commit `def5678`)
+
+### **Git Stash Commands**
+
+1. **`git stash`**  
+   **Definition:** Saves your changes in a temporary location. This is useful when you want to switch branches or perform other tasks but don’t want to commit your changes yet. The stash acts like a stack of changes that you can access and apply later.  
+   **Example:** `git stash` (saves the current changes to the stash)
+
+---
+
+2. **`git stash save "message"`**  
+   **Definition:** Saves your changes in the stash with a custom name/message to help you remember the purpose of the stash.  
+   **Example:** `git stash save "work in progress on X feature"` (saves the changes with the message "work in progress on X feature")
+
+---
+
+3. **`git stash list`**  
+   **Definition:** Displays the list of all stashes saved in the repository.  
+   **Example:** `git stash list` (shows all stashes with their indices and messages)
+
+---
+
+4. **`git stash apply`**  
+   **Definition:** Applies the most recent stash to your working directory without removing it from the stash list.  
+   **Example:** `git stash apply` (applies the most recent stash)
+
+---
+
+5. **`git stash apply stash@{n}`**  
+   **Definition:** Applies a specific stash, where `n` is the index of the stash in the list.  
+   **Example:** `git stash apply stash@{0}` (applies the first stash in the list)
+
+---
+
+6. **`git stash pop`**  
+   **Definition:** Applies the most recent stash and removes it from the stash list.  
+   **Example:** `git stash pop` (applies and removes the most recent stash)
+
+---
+
+7. **`git stash drop`**  
+   **Definition:** Removes a specific stash from the stash list without applying it.  
+   **Example:** `git stash drop` (drops the most recent stash)  
+   **Example:** `git stash drop stash@{0}` (drops the specific stash at index 0)
+
+---
+
+8. **`git stash apply stash@{n} <branch-name>`**  
+   **Definition:** Applies a specific stash to a specific branch.  
+   **Example:** `git stash apply stash@{0} feature-branch` (applies the stash at index 0 to the `feature-branch`)
+
+---
+
+9. **`git stash clear`**  
+   **Definition:** Clears all stashes from the stash list.  
+   **Example:** `git stash clear` (removes all stashes from the stash list)
+
+   ## Git Tagging
+
+1. `git tag -a <tag-name> -m "message"` - Create an annotated tag with a message
+   Example: `git tag -a v1.0 -m "Release 1.0"`
+1. `git tag` - List all tags in the repository
+
+   - Example: `git tag`
+
+1. `git tag <tag-name> <commit-hash>` - Tag a specific commit
+
+   Example: `git tag v1.0 abc1234`
+
+1. `git push origin <tag-name>` - Push a tag to the remote repository
+
+   Example: `git push origin v1.0`
+
+1. `git tag -d <tag-name>` - Delete a local tag
+
+   Example: `git tag -d v1.0`
+
+1. `git push origin :<tag-name>` - Delete a tag on the remote repository
+
+   Example: `git push origin :v1.0`
 
 ## **Remote Repositories**
 
