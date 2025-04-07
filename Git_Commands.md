@@ -13,6 +13,9 @@
 7. [Configuration and Settings](#configuration-and-settings)
 8. [Git Aliases](#git-aliases)
 9. [Diff Stash and Tags](#diff-stash-and-tags)
+10. [Git Rebase and Reflog Guide
+    ](#git-rebase-and-reflog-guide)
+11. [SSH Key Setup for GitHub](#ssh-key-setup-for-github)
 
 ---
 
@@ -47,13 +50,43 @@
    **Definition:** Pushes local commits to a remote repository, syncing your local branch with the remote one.  
    **Example:** `git push origin main`
 
-7. **`git pull`**  
+## Get code from remote repository
+
+There are two ways to get code from a remote repository:
+
+- fetch the code
+- pull the code
+
+Fetch the code means that you are going to download the code from the remote repository to your local repository. Pull the code means that you are going to download the code from the remote repository and merge it with your local repository.
+
+![alt text](image.png)
+
+### Fetch code
+
+To fetch code from a remote repository, you can use the following command:
+
+```bash
+git fetch <remote-name>
+```
+
+7.  **`git fetch`**  
+    **Definition:** Fetches changes from a remote repository but does not merge them into your local branch.  
+    **Example:** `git fetch`
+
+### Pull code
+
+To pull code from a remote repository, you can use the following command:
+
+```bash
+# git pull <remote-name> <branch-name>
+git pull origin main
+```
+
+Here <remote-name> is the name of the remote repository that you want to pull from and <branch-name> is the name of the branch that you want to pull.
+
+8. **`git pull`**  
    **Definition:** Fetches and merges changes from a remote repository into your local branch.  
    **Example:** `git pull origin main`
-
-8. **`git fetch`**  
-   **Definition:** Fetches changes from a remote repository but does not merge them into your local branch.  
-   **Example:** `git fetch`
 
 9. **`git merge`**  
    **Definition:** Merges a branch (or changes) into the current branch. This command can cause conflicts if there are discrepancies between the two branches.  
@@ -340,8 +373,28 @@ Stay safe and keep your commit history clean!
     **Definition:** Removes a remote repository from your project.  
     **Example:** `git remote remove origin`
 
+### Setup an upstream remote
+
+Setting up an upstream remote is useful when you want to keep your local repository up to date with the remote repository. It allows you to fetch and merge changes from the remote repository into your local repository.
+
+### To set up an upstream remote, you can use the following command:
+
+or you can use shorthand:
+
+```
+git remote add -u <remote-url>
+```
+
+**Example**
+
+```git push -u origin main
+
+```
+
 18. **`git push --set-upstream`**  
     **Definition:** Sets the upstream branch for your current branch, so subsequent pushes go to that branch by default.  
+    we can also use **`git push -u `**
+
     **Example:** `git push --set-upstream origin main`
 
 ---
@@ -417,6 +470,8 @@ Stay safe and keep your commit history clean!
 ---
 
 ---
+
+### SSH Key Setup for GitHub
 
 # 🔐 SSH Key Setup for GitHub
 
