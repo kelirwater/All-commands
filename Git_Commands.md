@@ -416,11 +416,217 @@ Stay safe and keep your commit history clean!
 
 ---
 
+---
+
+# 🔐 SSH Key Setup for GitHub
+
+Setting up an SSH key allows you to securely connect to GitHub without entering your username and password each time.
+
+---
+
+## 📌 `ssh-keygen`
+
+**Definition:** Generates a new SSH key.
+
+**Process:**
+
+# SSH Key Generation Guide
+
+This guide explains how to generate a new SSH key pair using the `ed25519` algorithm.
+
+## Step 1: Open Your Terminal
+
+First, open your terminal (Command Prompt, PowerShell, or any terminal on Linux/macOS).
+
+## Step 2: Run the Command
+
+To generate an SSH key pair, use the following command:
+
+```bash
+ssh-keygen -t ed25519 -C "your-email@chaicode.com"
+```
+
+### Breakdown of the Command:
+
+---
+
+`ssh-keygen`: This is the command-line tool to generate SSH keys.
+
+`-t ed25519`: Specifies the type of key to generate. ed25519 is a modern and highly secure elliptic curve algorithm for SSH keys. It's preferred over older algorithms like RSA because it offers better security with smaller key sizes and faster performance.
+
+`-C "your-email@chaicode.com"`: This flag adds a comment to the key, often used to identify it. The comment `"your-email@chaicode.com"` can be replaced with your own email address or any other description you'd like to associate with the key.
+
+## Step 3: Follow the Prompts
+
+After running the command, you will be prompted with the following:
+
+1. Enter file in which to save the key:
+
+- By default, the key is saved in the ~/.ssh/ directory. You can press Enter to accept the default location, or you can specify a different path.
+
+2. Enter passphrase (optional):
+
+- You will be prompted to enter a passphrase for the key. This adds an extra layer of security. You can either enter a passphrase or press Enter to skip this step.
+
+## Step 4: View Your SSH Key Pair
+
+After the process completes, you should see output similar to this:
+
+```bash
+Your identification has been saved in /home/username/.ssh/id_ed25519.
+Your public key has been saved in /home/username/.ssh/id_ed25519.pub.
+```
+
+- The private key is saved in ~/.ssh/id_ed25519 (or the custom location you specified).
+
+- The public key is saved in ~/.ssh/id_ed25519.pub.
+
+The public key is the one you will share with remote servers, while the private key stays secure on your local machine.
+
+## Step 5: Add the SSH Key to SSH Agent (Optional)
+
+If you want to use the SSH key automatically without entering the passphrase each time, you can add the private key to your SSH agent:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+## **Example for SSH**
+
+# 🔐 SSH Key Setup for GitHub
+
+Setting up an SSH key allows you to securely connect to GitHub without entering your username and password each time.
+
+---
+
+## you can open it on different tab using this link
+
+# Git Setup Documentation
+
+To learn how to set up SSH for Git, refer to the [GitHub SSH Setup Documentation](./github-ssh-setup.md).
+
+## 📌 `ssh-keygen`
+
+**Definition:** Generates a new SSH key.
+
+**Example:**
+
+```bash
+ssh-keygen -t ed25519 -C "your-email@chaicode.com"
+```
+
+- `-t ed25519`: Specifies the key type (recommended).
+
+- `-C`: A comment label, usually your email address.
+
+# 💾 Saving the Key
+
+After running the above command, you'll see a prompt:
+
+```bash
+Enter a file in which to save the key (/Users/YOU/.ssh/id_ed25519): [Press enter]
+```
+
+- Press Enter to accept the default location.
+
+- When prompted, optionally enter a passphrase or press Enter to skip.
+
+# ⚙️ ssh-agent
+
+Definition: A program that keeps your private key in memory for secure access.
+
+macOS / Linux:
+
+```bash
+eval "$(ssh-agent -s)"
+```
+
+Windows (Git Bash):
+
+```bash
+eval $(ssh-agent -s)
+```
+
+Add your private key:
+
+```bash
+ssh-add ~/.ssh/id_ed25519
+```
+
+# 💡 macOS only: Add your SSH key to the keychain:
+
+```bash
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+```
+
+---
+
+# 📋 Copy Public Key to Clipboard
+
+macOS:
+
+```bash
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+Windows (Git Bash):
+
+```bash
+clip < ~/.ssh/id_ed25519.pub
+```
+
+Linux:
+
+```bash
+xclip -sel clip < ~/.ssh/id_ed25519.pub
+```
+
+---
+
+# ➕ Add SSH Key to GitHub
+
+- Go to: GitHub → Settings → SSH and GPG Keys
+
+- Click "New SSH Key"
+
+- Add a title (e.g., My Personal Laptop) and paste the copied public key
+
+- Click "Add SSH key"
+
+[👉 More info: GitHub Docs – Add a new SSH key](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
+---
+
+# ✅ Test the SSH Connection
+
+`Run`:
+
+```bash
+ssh -T git@github.com
+```
+
+`Expected output:`
+
+```bash
+Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+# 📚 References
+
+[GitHub Docs – Connecting to GitHub with SSH](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
+
+[GitHub Docs – Adding a new SSH key](https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
 ## **Git Aliases**
 
 32. **`git config --global alias.<alias-name> "<command>"`**  
     **Definition:** Creates a shortcut (alias) for a Git command.  
     **Example:** `git config --global alias.co "checkout"` (so `git co` is a shortcut for `git checkout`)
+33. **`git config --get-regexp alias`**  
+     **Definition:** Show all configured Git aliases.
+    **Example:** `git config --global alias.aliases 'config --get-regexp alias'
+(so `git aliases`is a shortcut for`git get all aliasses`)
 
 ---
 
